@@ -1,0 +1,53 @@
+MODEL INPUTS REPORT
+Generated: 2026-05-18T11:44:05
+
+PATHS
+  project_root   : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025
+  db_dir         : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\model_db
+  input_dir      : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\inputs
+  meteo_dir      : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\inputs\meteo
+  lai_dir        : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\inputs\lai
+  landcover_dir  : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\inputs\landcover
+  validation_dir : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\inputs\validation
+  out_dir        : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025\outputs
+
+RUN SETTINGS
+  sim_freq     : H
+  warmup_days  : 730
+  meteo_period : 1990-01-01 -> 2025-12-31
+  meteo_cols   : ['P', 'PET']
+  missing_days : 0
+
+DISAGGREGATION
+  precip_method: dn_ratio
+  pet_method   : daylength
+  fnight_pet   : 0.05
+  dn_ratios    : shape=(12, 2), cols=['day_ratio', 'night_ratio']
+
+SOIL / LAYERS
+  n_layers      : 4
+  layer_edges_m : [0.0, 0.05, 0.3, 0.6, 1.2]
+  soil_layers   : ['L_01', 'L_02', 'L_03', 'L_04']
+  ptf_method    : Wosten_1999
+  ksat_method   : Gupta_2021_Ks
+
+  DERIVED SOIL PARAMS (per layer)
+  layer_ID  theta_sat   theta_fc   theta_wp    theta_r    Ks_mm_h      alpha       vG_n       vG_m
+  L_01        0.4917     0.2740     0.0864     0.0100        nan     0.0174     1.3308     0.2486
+  L_02        0.4917     0.2740     0.0864     0.0100        nan     0.0174     1.3308     0.2486
+  L_03        0.4917     0.2740     0.0864     0.0100        nan     0.0174     1.3308     0.2486
+  L_04        0.4917     0.2740     0.0864     0.0100        nan     0.0174     1.3308     0.2486
+
+LANDCOVER
+  sum(lu_frac) : 1.000000
+  - Bare: 0.1500 (bare)
+  - Deciduous broadleaf forest: 0.1000
+  - Grassland: 0.7500
+
+LAI
+  All non-bare landcover types have LAI cycles.
+
+ROOT FRACTIONS
+  - Bare: rf sum=[0. 0. 0. 0.]
+  - Deciduous broadleaf forest: rf sum=[0.1848894 0.486473  0.2023338 0.1263038]
+  - Grassland: rf sum=[0.27488985 0.49331884 0.1464336  0.08535771]

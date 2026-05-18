@@ -1,0 +1,22 @@
+WATER BALANCE REPORT
+Generated: 2026-05-18T11:44:05
+
+=== PERIOD ===
+meteo   : 1990-01-01 -> 2025-12-31
+forcing : 1990-01-01 00:00:00 -> 2025-12-31 23:00:00
+sim_freq: H
+steps   : 315576
+
+=== WATER BALANCE (rough, timestep totals) ===
+Sum P        = 30354.940177
+Sum ET       = 16255.449083
+Sum runoff   = 2790.829287
+Sum recharge = 15885.951598
+Check P - ET - R - Q = -4577.289791
+
+Recharge columns used:
+  - recharge_L4
+  - wetland_recharge
+
+=== OUTPUT COLUMNS (df_all) ===
+interception, throughfall, canopy_evap, canopy_evap_grid, infiltration, surface_run_off, evap_actual_bs, total_evap, unmet_T, wetland_storage, wetland_depth, wetland_active_area_fraction, soil_moisture_L1, aET_L1, soil_moisture_L2, aET_L2, soil_moisture_L3, aET_L3, soil_moisture_L4, aET_L4, percolation_L1L2, percolation_L2L3, percolation_L3L4, recharge_L4, pre, pet, wetland_routed_runoff, wetland_precip, wetland_evap, wetland_infiltration, wetland_overflow, wetland_recharge, surface_runoff_after_wetland

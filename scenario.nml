@@ -1,0 +1,41 @@
+&scenario
+  name = 'more_forest'
+  enabled = .true.
+/
+
+!===================================================================================================
+!Landcover change scenario settings. The soil scenario complements the landcover change by modifying the soil properties in the converted area to reflect the new vegetation type.
+! For example, if we convert grassland to forest, we might expect an increase in soil organic matter content and a change in soil texture due to increased litter input and root growth, which can be represented in the soil scenario settings.
+
+&landcover_scenario
+  enabled = .false. ! .true or .false. Whether to apply a landcover change scenario. If true, the model will modify the landcover fractions according to the settings below. This allows for testing the impact of landcover changes on wetland hydrology.
+  from_lu = 'Grassland' ! landcover type to change (must match lu_type in landcover fractions file) and should be in the model's landcover database
+  to_lu = 'Deciduous broadleaf forest'   ! landcover type to change to (must match lu_type in landcover fractions file) and should be in the model's landcover database
+  fraction = 0.0 ! Fraction of the grid cell to convert from from_lu to to_lu. For example, if fraction=0.5, then 50% of the area currently classified as from_lu will be converted to to_lu, and the remaining 50% will stay as from_lu. The model will adjust the landcover fractions accordingly while ensuring that the total fraction sums to 1.
+  fraction_mode = 'source' ! Mode for interpreting the fraction: 'absolute' or 'source'
+/
+
+&soil_scenario
+  enabled = .false.
+  method = 'infiltration_pond' ! Method to apply soil changes, options: 'infiltration_change', 'derived_parameters_change'. The first method modifies the infiltration parameters directly to reflect changes in soil properties due to landcover change, while the second method modifies the derived soil hydraulic parameters (e.g., field capacity, wilting point) based on the new soil properties after landcover change.
+  ! must be scenarios.py (apply_soil_scenario function). 
+/
+
+!===================================================================================================
+
+&wetland_scenario
+  enabled = .true.
+
+  area_fraction = 0.10 
+  route_runoff_fraction = 1.00
+
+  h_max_m = 1.00
+  h_spill_m = 0.80
+
+  k_infil_m_per_h = 0.0003
+  outflow_coeff_m_per_h = 0.002
+  outflow_exp = 1.5
+
+  open_water_evap_factor = 1.05
+  initial_depth_m = 0.00
+/

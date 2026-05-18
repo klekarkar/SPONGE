@@ -1,0 +1,23 @@
+ROSETTA
+https://dsiweb.cse.msu.edu/rosetta/
+-----------------------------------
+#GitHub
+https://github.com/usda-ars-ussl/rosetta-soil
+---------------------------------------------
+
+PTFs publications
+----------------------------------
+Evaluation of pedotransfer functions for predicting soil hydraulic properties: A voyage from regional to field scales across Europe 
+https://doi.org/10.1016/j.ejrh.2021.100903
+
+Revisiting Vereecken Pedotransfer Functions: Introducing a Closed-Form Hydraulic Model
+https://doi.org/10.2136/vzj2008.0062
+
+Erratum to “Revisiting Vereecken Pedotransfer Functions: Introducing a Closed-Form Hydraulic Model”
+ https://doi.org/10.2136/vzj2008.0062erDigital Object Identifier (DOI)
+
+Using Pedotransfer Functions Estimate the van Genuchten–Mualem Soil Hydraulic Properties:A Review
+doi:10.2136/vzj2010.0045
+
+Excluding Organic Matter Content fromPedotransfer Predictors of Soil Water Retention
+doi:10.2136/sssaj2006.0098

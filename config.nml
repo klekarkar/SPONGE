@@ -1,0 +1,102 @@
+&data
+  data_dir = "./data/"
+/
+
+&model
+! Frequency of simulation time steps either hourly ('h') or daily ('D')
+! Define warmup period in days to be excluded from outputs
+  sim_freq = "H"    
+  warmup_days  = 730 
+/
+
+&time
+! Simulation start and end dates in DD/MM/YYYY format
+!This is optional; if left empty, the model will use the full range of the meteo file
+  start_date = "01/01/1994"      
+  end_date   = "31/12/2020"
+/
+
+&meteo
+!Model input meteorological data and latitude for daylength calculations
+  meteo_file     = "Boechout_precip_PET.csv"           
+  dn_ratios_file = "pre_day_night_ratios.csv"
+  latitude       = 51.091
+  precip_col     = "P"           ! column name in meteo_file
+  pet_col        = "PET"         ! column name in meteo_file
+/
+
+&disagg
+  precip_method = "dn_ratio"     ! "dn_ratio" (day/night ratios) or "uniform"
+  pet_method    = "daylength"    ! "daylength" or "uniform"
+  fnight_pet    = 0.05           ! used when pet_method="daylength"
+/
+
+&layers
+! Soil layer edges in meters and corresponding soil textures.
+! The number of textures must be one less than the number of edges.
+  layer_edges_m = 0.0, 0.05, 0.3, 1.0, 2.0
+  soil_textures = "Sandy loam", "Sandy loam", "Clay", "Sandy loam"
+/
+
+&soil
+! Brooks-Corey soil hydraulic parameters lookup file and column names
+  bc_lookup_file = "brooks_corey_soil_lookup.csv"
+
+  ! the first column is the texture name (file starts with a comma)
+  texture_is_index = .true.
+
+  bc_b_col      = "b"
+  ksat_col      = "Ksat_cm_h"    ! will be converted to mm/h
+  theta_sat_col = "theta_S"
+  theta_fc_col  = "theta_FC"
+  theta_wp_col  = "theta_PWP"
+
+  theta_r_mode  = "wp"           ! keep as-is: theta_r = theta_wp
+  theta_r_col   = "theta_r"      ! not used unless theta_r_mode="table"
+/
+
+&vegetation
+! IGBP vegetation type parameters lookup file and column names
+  igbp_root_params_file = "igbp_root_params.csv"
+  igbp_id_col           = "igbp_ID"
+  igbp_type_col         = "igbp_type"
+  igbp_veg_type         = "Grassland" 
+  a_col         = "a"
+  b_col         = "b"
+  dr_col        = "dr"
+
+  ! handling missing params (wetland)
+  wetland_proxy_type = "Grassland"   ! used when igbp_type is "Permanent wetland"
+/
+
+&landcover
+! Land cover fractions
+tall_vegetation_frac = 0.3
+short_vegetation_frac = 0.2
+bare_soil_frac = 0.5
+/
+
+&lai
+  modis_lai_file = "modisLAI_2002_2020.csv"
+/
+
+&infiltration_params
+! Infiltration parameters lookup file and column names
+  infil_lookup_file = "infiltration_params.csv"
+  texture_col       = "texture"
+  ks_col            = "Ks_mm_h"
+  s_col             = "S_mm_h05"
+  use_layer          = 1          ! which soil layer drives infiltration (1=top)
+/
+
+
+&infiltration_model
+!Choice of infiltration model
+  infiltration_model = "valiantzas_model"
+/
+
+
+&outputs
+  out_dir = "./outputs/"
+  save_hourly = .true.
+/

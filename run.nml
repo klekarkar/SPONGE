@@ -1,0 +1,73 @@
+&model
+! Model configuration namelist
+  input_freq  = "D"  ! input data frequency: "D"=daily, "H"=hourly
+  sim_freq    = "H"  ! model simulation timestep: "D"=daily, "H"=hourly
+  warmup_days = 730
+/
+
+! Simulation time period
+&time
+  start_date = "01/01/1990"
+  end_date   = "31/12/2025"
+/
+
+! Meteorological input files
+&meteo
+  meteo_file     = "meteo.csv"
+  dn_ratios_file = "pre_day_night_ratios.csv"
+  latitude       = 51.168
+/
+
+
+&disagg
+! Meteorological disaggregation settings to sub-daily timestep
+  precip_method = "dn_ratio"
+  pet_method    = "daylength"
+  fnight_pet    = 0.05
+/
+
+&soil
+! Soil layer configuration
+!File containing soil textures per layer, with columns: "layer", "sand", "silt", "clay", "Db", "OM", "topsoil" (boolean)
+  soil_textures_file = "soil_textures.csv"
+  export_derived_soil_params = .true. # Whether to export derived soil hydraulic parameters to a file
+  derived_soil_water_retention_file   = "soil_hydraulic_properties.csv"
+
+! depth of soil layer edges in meters
+  layer_edges_m = 0.0, 0.05, 0.3, 0.6, 1.2
+
+  ! soil layer name, length must be one less than number of layer edges
+  ! the layer names must appear in the soil hydraulic characteristics database file
+  soil_layers = "L_01", "L_02", "L_03", "L_04"
+
+  !PTF methods to derive soil hydraulic parameters for each layer, must be one of:
+  !  "Weynants_2009", "Wosten_1999", "Saxton_Rawls_2006", "Vereecken_1989", "Zacharias_Wessolek_2007"
+  !  Zacharias_Wessolek_2007 does not require OM content
+  ptf_method= "Wosten_1999"
+
+  !Method to compute Ksat: Must be one of:
+  ! Wosten_1999_Ks', 'Gupta_2021_Ks', 'Cosby_1984_Ks', 'Saxton_Rawls_2006_Ks'
+  ! If ptf_method=Saxton_Rawls_2006, the model will automatically use 'Saxton_Rawls_2006_Ks' for Ksat since it uses the lambda parameter. Otherwise it will use the method specified here
+  ksat_method = "Gupta_2021_Ks"
+/
+
+&vegetation_defaults
+! Default vegetation parameters
+  wetland_proxy_type   = "Grassland"
+/
+
+&landcover
+! Landcover fractions file
+  landcover_file  = "landcover_fractions.csv"
+/
+
+&lai
+! Leaf Area Index input file
+  lai_file  = "lai_doy_cycles.csv"
+/
+
+! &process
+! ! Infiltration model settings
+!   infiltration_model = "valiantzas_model"
+!   infil_use_layer    = 1
+! /

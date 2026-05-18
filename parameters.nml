@@ -1,0 +1,26 @@
+&PARAMETERS
+  ! ET params
+  stress_method  = "araki_2025"   ! "vic_gsm" or "canopy_resistance" or "linear". The first two are the same.
+  f_cr           = 0.85                  ! theta_cr = wp + f_cr*(fc-wp)
+  lai_k          = 0.60                  ! for pveg = 1-exp(-lai_k*LAI)
+  use_lai_pveg   = .false.               ! if true, pveg comes from LAI curve
+
+
+  ! CANOPY
+canopy_method = "liang_1994"   ! "options: "liang_1994", "swat". SWAT method uses a max canopy storage (canmx_mm) and computes throughfall as excess after filling the canopy, while liang_1994 uses an extinction coefficient to compute throughfall as an exponential decay of precipitation with LAI. The SWAT method is more physically based and allows for a maximum canopy storage, while the Liang 1994 method is simpler and may be less accurate in cases of high LAI or intense rainfall.
+canmx_mm      = 0.1           ! SWAT: max storage at full canopy (mm)
+lai_max_mode  = "climatology"  ! or "fixed"
+lai_max_fixed = 5.0
+c_int         = 0.08           ! interception runoff coefficient, only used if canopy_method="liang_1994"
+
+!  Araki 2025 stress function q parameter, only used if stress_method="araki_2025"
+! range [1.5 -2.2]    higher values make the stress curve steeper around theta_cr, default 1.7 based on Araki et al. (2025) global calibration
+  q_sm = 2.5        
+  q_soil = 1.7
+
+  ! Infiltration / drainage params
+  b_infilt       = 0.1 !default 0.2
+  tau_vG         = 0.50 !default 0.5. Best not to change this.
+  drain_above_fc = .false.
+/
+

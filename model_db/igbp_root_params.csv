@@ -1,0 +1,18 @@
+igbp_ID,igbp_type,a,b,dr
+1,Evergreen needleleaf forest,6.706,2.175,1.8
+2,Evergreen broadleaf forest,7.344,1.303,3
+3,Deciduous needleleaf forest,7.066,1.953,2
+4,Deciduous broadleaf forest,5.99,1.955,2
+5,Mixed forest,4.453,1.631,2.4
+6,Closed shrubland,6.326,1.567,2.5
+7,Open shrubland,7.718,1.262,3.1
+8,Woody savanna,7.604,2.3,1.7
+9,Savanna,8.235,1.627,2.4
+10,Grassland,10.74,2.608,1.5
+11,Permanent wetland,,,
+12,Cropland,5.558,2.614,1.5
+13,Urban and built-up land,5.558,2.614,1.5
+14,Cropland/natural vegetation,5.558,2.614,1.5
+15,Snow and ice,,,
+16,Barren,4.372,0.978,4
+17,Water bodies,,,

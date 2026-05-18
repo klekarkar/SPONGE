@@ -1,0 +1,19 @@
+&paths
+! model directories
+  project_root = "./"
+  db_dir       = "./model_db/" ! database directory with soil and vegetation parameters
+  input_dir    = "./inputs/"
+  out_dir      = "./outputs/"
+
+  meteo_subdir     = "meteo" ! meteorological inputs
+  lai_subdir       = "lai" ! leaf area index inputs
+  soil_subdir      = "soil" ! soil input files (textures, derived parameters)
+  landcover_subdir = "landcover" ! land cover inputs
+  validation_subdir= "validation" ! validation data inputs
+/
+
+&db_files
+  bc_lookup_file        = "brooks_corey_soil_lookup.csv"
+  igbp_root_params_file = "igbp_root_params.csv"
+  infil_lookup_file     = "infiltration_params.csv"
+/
