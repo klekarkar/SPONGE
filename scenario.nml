@@ -24,7 +24,7 @@
 !===================================================================================================
 
 &wetland_scenario
-  enabled = .true.
+  enabled = .false.
 
   area_fraction = 0.10 
   route_runoff_fraction = 1.00

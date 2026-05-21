@@ -1,5 +1,5 @@
 WATER BALANCE REPORT
-Generated: 2026-05-18T11:44:05
+Generated: 2026-05-20T16:53:09
 
 === PERIOD ===
 meteo   : 1990-01-01 -> 2025-12-31
@@ -9,10 +9,10 @@ steps   : 315576
 
 === WATER BALANCE (rough, timestep totals) ===
 Sum P        = 30354.940177
-Sum ET       = 16255.449083
-Sum runoff   = 2790.829287
-Sum recharge = 15885.951598
-Check P - ET - R - Q = -4577.289791
+Sum ET       = 16579.452987
+Sum runoff   = 2760.057770
+Sum recharge = 11020.808781
+Check P - ET - R - Q = -5.379362
 
 Recharge columns used:
   - recharge_L4

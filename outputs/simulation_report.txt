@@ -1,5 +1,5 @@
 MODEL INPUTS REPORT
-Generated: 2026-05-18T11:44:05
+Generated: 2026-05-20T16:53:09
 
 PATHS
   project_root   : W:\VUB\_main_research\scripts\wetland_model\conceptual_model\model_setup_v2_2025
@@ -41,8 +41,8 @@ SOIL / LAYERS
 LANDCOVER
   sum(lu_frac) : 1.000000
   - Bare: 0.1500 (bare)
-  - Deciduous broadleaf forest: 0.1000
-  - Grassland: 0.7500
+  - Deciduous broadleaf forest: 0.2500
+  - Grassland: 0.6000
 
 LAI
   All non-bare landcover types have LAI cycles.
